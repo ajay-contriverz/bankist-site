@@ -158,10 +158,15 @@ const maxSlides = slides.length - 1;
 const dotsSize = slides.length;
 const dots = document.querySelector(".dots");
 
-for (let i = 0; i < dotsSize; i++) {
+// for (let i = 0; i < dotsSize; i++) {
+//   const dotsSpan = `<span class="dots__dot" data-dot="${i}"></span>`
+//   dots.insertAdjacentHTML("beforeend", dotsSpan)
+// }
+
+slides.forEach(function(_, i){
   const dotsSpan = `<span class="dots__dot" data-dot="${i}"></span>`
   dots.insertAdjacentHTML("beforeend", dotsSpan)
-}
+})
 const dot = document.querySelectorAll(".dots__dot");
 
 const slideChange = function(slide){
@@ -207,3 +212,20 @@ const nextSlide = function(){
 }
 prev.addEventListener("click" , prevSlide)
 next.addEventListener("click" , nextSlide)
+document.addEventListener("keydown", function(e){
+  const  key = e.key;
+  switch (key) {
+    case "ArrowUp":
+      prevSlide()
+      break;
+    case "ArrowLeft":
+      prevSlide()
+      break;
+    case "ArrowDown":
+      nextSlide()
+      break;
+    case "ArrowRight":
+      nextSlide()
+      break;
+  }
+})
